@@ -27,3 +27,5 @@ HTML area chart element done with ApexChart
 ### 3. EVENTS
 
   - **NONE**
+
+### 4. UPDATES
