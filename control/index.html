@@ -34,7 +34,8 @@
           DataName: ["Pezzi prodotti"],
           X_axisname: 'Tempo',
           Y_axisname: 'Produzione',
-          SeriesLabels: 'true'
+          SeriesLabels: 'True',
+          LineType: 'smooth'
         };
         init(true);
       }
@@ -126,15 +127,22 @@
 
       // load and parse SeriesLabels
       if (props.hasOwnProperty('SeriesLabels') && props.SeriesLabels != null) {
-        if (props.SeriesLabels == 'true') {
+        if (props.SeriesLabels == 'True') {
           propsSeriesLabels = true
         } else {
           propsSeriesLabels = false
         }
       }
 
+      // load and parse LineType
+      if (props.hasOwnProperty('LineType') && props.LineType != null) {
+        propsLineType = props.LineType.toLowerCase();
+      }
+
+      
+
       let xSeries = createSeries(propsDataName, propsY_axis, propsSeriesColor);
-      showChart(xSeries, propsX_axisname, propsY_axisname, propsSeriesLabels);
+      showChart(xSeries, propsX_axisname, propsY_axisname, propsSeriesLabels, propsLineType);
     }
 
     function createSeries(name, data, color) {
@@ -189,13 +197,10 @@
     }
 
 
-    function showChart(xSeries, XNames, YNames, xLabels) {
+    function showChart(xSeries, XNames, YNames, xLabels, xLineType) {
       var options = {
 
         series: xSeries,
-        theme: {
-          palette: 'palette1'
-        },
         chart: {
           type: 'area',
           width: '100%',
@@ -208,7 +213,7 @@
           enabled: xLabels
         },
         stroke: {
-          curve: 'smooth',
+          curve: xLineType,
           lineCap: 'round',
         },
 

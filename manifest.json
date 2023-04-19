@@ -48,11 +48,32 @@
                     },
                     "SeriesLabels": {
                         "type": "string",
-                        "default": "false"
+                        "$ref": "#/control/types/LineTipes"
+                    },
+                    "LineType": {
+                        "$ref": "#/control/types/TrueFalse"
                     }
                 }
             }
         },
-        "types": {}
+        "types": {
+            "LineTipes": {
+				"type": "string",
+				"enum": [
+					"Smooth",
+					"Straight",
+					"Stepline"
+				],
+				"default": "smooth"
+			},
+            "TrueFalse": {
+				"type": "string",
+				"enum": [
+					"True",
+					"False"
+				],
+				"default": "True"
+			}
+        }
     }
 }

@@ -22,10 +22,9 @@ HTML area chart element done with ApexChart
 
   - **SeriesColor** : Array of string with the color in Hex format for each series (i.e. ["#ee730d","#1183e8"])
   
-  - **SeriesLabels** : Flag to hide or show (false / true) the labels on the series (i.e. "true")
+  - **SeriesLabels** : Flag to hide or show (False / True) the labels on the series (i.e. "True")
   
+  - **LineType** : Draw smooth lines or straight lines (i.e. "Smooth")
 ### 3. EVENTS
 
   - **NONE**
-
-### 4. UPDATES
