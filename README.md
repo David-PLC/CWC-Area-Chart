@@ -52,6 +52,10 @@ HTML area chart element done with ApexChart
     ```
 
   - ONLINE MODE (WinCC Unfied)
+    -  Set "production" to true
+    ```js
+    var production = true;
+    ```
     - To import the custom web control the hierarchy of folders and files must be compressed in ZIP format.
     - The name of the ZIP must be the GUID used the "manifest.json" file surrounded by curly brackets
 
