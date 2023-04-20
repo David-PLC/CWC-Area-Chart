@@ -59,17 +59,18 @@ HTML area chart element done with ApexChart
       type": "guid://4703190B-4D05-4F16-B52C-B4E3B46092C2",
     ```
     - {4703190B-4D05-4F16-B52C-B4E3B46092C2}.zip
-
     - If you want this custom web control available for all your project, copy this file in the folder : 
       - C:\Program Files\Siemens\Automation\Portal V17\Data\Hmi\CustomControls
       - replace "Porla V17" with your Tia version.
     - If you want to use this custom web control only in one project copy this file in the folder :
 
       - \path_to_tia_project\UserFiles
-      
+
+
     - Refresh "My controls" to update the files in TIA Portal
+    - Now you can place the custom web control in the Screen.
+
       <p align="center" style="margin-bottom: 0px !important;">
         <img width="550" src="docs/MyControls.PNG" alt="My controls" align="left">
-      </p>
+      </p> 
   
-    - Now you can place the custom web control in the Screen.
