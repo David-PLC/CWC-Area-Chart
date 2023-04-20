@@ -69,7 +69,7 @@ HTML area chart element done with ApexChart
       
     - Refresh "My controls" to update the files in TIA Portal
       <p align="center" style="margin-bottom: 0px !important;">
-        <img width="550" src="docs/MyControls.png" alt="My controls" align="left">
+        <img width="550" src="docs/MyControls.PNG" alt="My controls" align="left">
       </p>
   
     - Now you can place the custom web control in the Screen.
