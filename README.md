@@ -1,8 +1,9 @@
-# CWC-Area-Chart
+<h1 align="center" style="margin-top: 0px;">Area chart CWC made for WinCC Unified</h1>
 
-<img src="https://apexcharts.com/wp-content/themes/apexcharts/img/apexcharts-logo-white-trimmed.svg" alt="Apex Chart"/>
+<p align="center" style="margin-bottom: 0px !important;">
+  <img width="200" src="docs/icon.png" alt="Icon" align="center">
+</p>
 
-Custom Web Control made for WinCC Unified
 
 ### 1. CONTENT
 
@@ -14,7 +15,7 @@ HTML area chart element done with ApexChart
 
   - **Y_axis** : String in array format of numbers to draw the seires of the chart (i.e. "[[18, 21, 22, 16, 19, 21, 21, 21],[7, 9, 11, 11, 9, 12, 11, 11]]")
   
-  - **DataName** : Array of strings with the name for each series (i.e. ["Maximum (°C)","Minimum (°C)"])
+  - **DataName** : Array of strings with the name for each series (i.e. ["Max °C","Min °C"])
     
   - **X_axisname** : Name of the X axis (i.e. "Days")
   

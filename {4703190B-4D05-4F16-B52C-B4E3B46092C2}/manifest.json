@@ -1,0 +1,79 @@
+{
+    "mver": "1.2.0",
+    "control": {
+        "identity": {
+            "name": "AreaChart",
+            "version": "2",
+            "displayname": "Area chart",
+            "icon": "./control/icon.png",
+            "type": "guid://4703190B-4D05-4F16-B52C-B4E3B46092C2",
+            "start": "./control/index.html"
+        },
+        "enviroment": {
+            "extensions": {
+                "HMI": {
+                    "mandatory": true,
+                    "version": "2.0"
+                }
+            }
+        },
+        "contracts": {
+            "api": {
+                "methods": {},
+                "events": {},
+                "properties": {
+                    "X_axis": {
+                        "type": "string",
+                        "default": "[]"
+                    },
+                    "Y_axis": {
+                        "type": "string",
+                        "default": "[]"
+                    },
+                    "DataName": {
+                        "type": "string",
+                        "default": "[]"
+                    },
+                    "SeriesColor": {
+                        "type": "string",
+                        "default": "[]"
+                    },
+                    "X_axisname": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "Y_axisname": {
+                        "type": "string",
+                        "default": ""
+                    },
+                    "SeriesLabels": {
+                        "type": "string",
+                        "$ref": "#/control/types/LineTipes"
+                    },
+                    "LineType": {
+                        "$ref": "#/control/types/TrueFalse"
+                    }
+                }
+            }
+        },
+        "types": {
+            "LineTipes": {
+				"type": "string",
+				"enum": [
+					"Smooth",
+					"Straight",
+					"Stepline"
+				],
+				"default": "smooth"
+			},
+            "TrueFalse": {
+				"type": "string",
+				"enum": [
+					"True",
+					"False"
+				],
+				"default": "True"
+			}
+        }
+    }
+}
