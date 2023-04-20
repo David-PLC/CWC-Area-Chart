@@ -75,6 +75,6 @@ HTML area chart element done with ApexChart
     - Now you can place the custom web control in the Screen.
 
       <p align="center" style="margin-bottom: 0px !important;">
-        <img width="550" src="docs/MyControls.PNG" alt="My controls" align="left">
+        <img width="700" src="docs/AreaChart_offline.PNG" alt="My controls" align="center">
       </p> 
-  
+
