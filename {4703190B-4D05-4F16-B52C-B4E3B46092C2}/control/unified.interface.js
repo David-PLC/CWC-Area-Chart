@@ -17,11 +17,11 @@ const _contract = {
 
 var UnifiedInterface = function () {
     var _initialize = function () {
-        console.log('COMI-Chart: UnifiedInterface initialized');
+        console.log('CWC_AreaChart: UnifiedInterface initialized');
     };
     
     var _setProps = function (data) {
-         console.log('COMI-Cart: Key <', data.key, '>');
+         console.log('CWC_AreaChart: Key <', data.key, '>');
          if (data.key === 'Y_axis' || data.key === 'DataName') {
             console.log('updateSeries!');
             updateSeries(WebCC.Properties.DataName, WebCC.Properties.Y_axis);

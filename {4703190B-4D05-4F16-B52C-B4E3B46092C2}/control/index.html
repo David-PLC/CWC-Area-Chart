@@ -21,7 +21,7 @@
         unifiedInterfaceInit();
         chartInit(WebCC.Properties);
       } else {
-        console.log('COMI-Chart: Init without result.');
+        console.log('CWC_CWC_AreaChart: Init without result.');
       }
     }
 
@@ -62,12 +62,12 @@
       // load and parse Xaxis
       if (props.hasOwnProperty('X_axis') && props.X_axis != null) {
         if (typeof props.X_axis === 'string') {
-          console.log('COMI-Chart: props.Xaxis:' + props.X_axis);
+          console.log('CWC_AreaChart: props.Xaxis:' + props.X_axis);
           propsX_axis = JSON.parse(props.X_axis);
         } else if (Array.isArray(props.X_axis)) {
           propsX_axis = props.X_axis;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: X_axis');
+          console.log('CWC_AreaChart: WRONG FORMAT: X_axis');
         }
       } else {
         return;
@@ -76,12 +76,12 @@
       // load and parse Y_axis
       if (props.hasOwnProperty('Y_axis') && props.Y_axis != null) {
         if (typeof props.Y_axis === 'string') {
-          console.log('COMI-Chart: props.Y_axis:' + props.Y_axis);
+          console.log('CWC_AreaChart: props.Y_axis:' + props.Y_axis);
           propsY_axis = JSON.parse(props.Y_axis);
         } else if (Array.isArray(props.Y_axis)) {
           propsY_axis = props.Y_axis;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: Y_axis');
+          console.log('CWC_AreaChart: WRONG FORMAT: Y_axis');
         }
       } else {
         return;
@@ -90,12 +90,12 @@
       // load and parse DataName
       if (props.hasOwnProperty('DataName') && props.DataName != null) {
         if (typeof props.DataName === 'string') {
-          console.log('COMI-Chart: props.DataName:' + props.DataName);
+          console.log('CWC_AreaChart: props.DataName:' + props.DataName);
           propsDataName = JSON.parse(props.DataName);
         } else if (Array.isArray(props.DataName)) {
           propsDataName = props.DataName;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: DataName');
+          console.log('CWC_AreaChart: WRONG FORMAT: DataName');
         }
       } else {
         return;
@@ -104,12 +104,12 @@
       // load and parse SeriesColor
       if (props.hasOwnProperty('SeriesColor') && props.SeriesColor != null) {
         if (typeof props.SeriesColor === 'string') {
-          console.log('COMI-Chart: props.SeriesColor:' + props.SeriesColor);
+          console.log('CWC_AreaChart: props.SeriesColor:' + props.SeriesColor);
           propsSeriesColor = JSON.parse(props.SeriesColor);
         } else if (Array.isArray(props.SeriesColor)) {
           propsSeriesColor = props.SeriesColor;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: SeriesColor');
+          console.log('CWC_AreaChart: WRONG FORMAT: SeriesColor');
         }
       } else {
         return;
@@ -161,12 +161,12 @@
     function updateSeries(name, data) {
       if (data != null) {
         if (typeof data === 'string') {
-          console.log('COMI-Chart: data:' + data);
+          console.log('CWC_AreaChart: data:' + data);
           propsData = JSON.parse(data);
         } else if (Array.isArray(data)) {
           propsData = data;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: data');
+          console.log('CWC_AreaChart: WRONG FORMAT: data');
         }
       } else {
         return;
@@ -174,12 +174,12 @@
 
       if (name != null) {
         if (typeof name === 'string') {
-          console.log('COMI-Chart: name:' + name);
+          console.log('CWC_AreaChart: name:' + name);
           propsName = JSON.parse(name);
         } else if (Array.isArray(name)) {
           propsName = name;
         } else {
-          console.log('COMI-Chart: WRONG FORMAT: DataName');
+          console.log('CWC_AreaChart: WRONG FORMAT: DataName');
         }
       } else {
         return;
