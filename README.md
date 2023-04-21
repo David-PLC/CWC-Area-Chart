@@ -43,7 +43,7 @@ HTML area chart element done with ApexChart
       SeriesColor: ["#ee730d","#1183e8"]
   ```
 
-  - **SeriesLabels** : Flag to hide or show (False / True) the labels on the series (i.e. "True")
+  - **SeriesLabels** : Flag to hide or show (False / True) the labels on the series (i.e. true)
   
   - **LineType** : Draw smooth lines or straight lines (i.e. "Smooth")
 ### **3. EVENTS**
@@ -66,7 +66,7 @@ HTML area chart element done with ApexChart
       DataName: ["Max °C", "Min °C"],
       X_axisname: 'Days',
       Y_axisname: 'Temperatures',
-      SeriesLabels: 'True',
+      SeriesLabels: true,
       LineType: 'smooth'
     };
     ```
