@@ -34,7 +34,7 @@
           DataName: ["Max °C", "Min °C"],
           X_axisname: 'Days',
           Y_axisname: 'Temperatures',
-          SeriesLabels: 'True',
+          SeriesLabels: true,
           LineType: 'Smooth'
         };
         init(true);
@@ -127,11 +127,7 @@
 
       // load and parse SeriesLabels
       if (props.hasOwnProperty('SeriesLabels') && props.SeriesLabels != null) {
-        if (props.SeriesLabels == 'True') {
-          propsSeriesLabels = true
-        } else {
-          propsSeriesLabels = false
-        }
+          propsSeriesLabels = props.SeriesLabels
       }
 
       // load and parse LineType

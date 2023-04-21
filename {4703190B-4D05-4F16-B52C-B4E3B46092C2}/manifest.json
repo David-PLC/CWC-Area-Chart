@@ -47,8 +47,8 @@
                         "default": ""
                     },
                     "SeriesLabels": {
-                        "type": "string",
-                        "$ref": "#/control/types/LineTipes"
+                        "type": "boolean",
+                        "default": true
                     },
                     "LineType": {
                         "$ref": "#/control/types/TrueFalse"
@@ -65,14 +65,6 @@
 					"Stepline"
 				],
 				"default": "smooth"
-			},
-            "TrueFalse": {
-				"type": "string",
-				"enum": [
-					"True",
-					"False"
-				],
-				"default": "True"
 			}
         }
     }
