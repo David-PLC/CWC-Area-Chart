@@ -51,7 +51,7 @@
                         "default": true
                     },
                     "LineType": {
-                        "$ref": "#/control/types/TrueFalse"
+                        "$ref": "#/control/types/LineTipes"
                     }
                 }
             }

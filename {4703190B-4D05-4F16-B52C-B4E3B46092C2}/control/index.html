@@ -127,7 +127,7 @@
 
       // load and parse SeriesLabels
       if (props.hasOwnProperty('SeriesLabels') && props.SeriesLabels != null) {
-          propsSeriesLabels = props.SeriesLabels
+        propsSeriesLabels = props.SeriesLabels
       }
 
       // load and parse LineType
@@ -135,7 +135,6 @@
         propsLineType = props.LineType.toLowerCase();
       }
 
-      
 
       let xSeries = createSeries(propsDataName, propsY_axis, propsSeriesColor);
       showChart(xSeries, propsX_axisname, propsY_axisname, propsSeriesLabels, propsLineType);
@@ -206,7 +205,11 @@
           }
         },
         dataLabels: {
-          enabled: xLabels
+          enabled: xLabels,
+          textAnchor: 'start',
+          formatter: function (val, opt) {
+            return val + ''
+          }
         },
         stroke: {
           curve: xLineType,
