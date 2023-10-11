@@ -4,7 +4,7 @@
         "identity": {
             "name": "AreaChart",
             "version": "2",
-            "displayname": "Area chart0",
+            "displayname": "Area chart",
             "icon": "./control/icon.png",
             "type": "guid://4703190B-4D05-4F16-B52C-B4E3B46092C2",
             "start": "./control/index.html"
