@@ -50,8 +50,18 @@
                         "type": "boolean",
                         "default": true
                     },
+                    "Render": {
+                        "type": "boolean",
+                        "default": false
+                    },
                     "LineType": {
                         "$ref": "#/control/types/LineTipes"
+                    },
+                    "XAxisType": {
+                        "$ref": "#/control/types/XaxisType"
+                    },
+                    "ChartType": {
+                        "$ref": "#/control/types/ChartType"
                     }
                 }
             }
@@ -65,6 +75,24 @@
 					"Stepline"
 				],
 				"default": "smooth"
+			},
+            "XaxisType": {
+				"type": "string",
+				"enum": [
+					"Category",
+					"Datetime",
+					"Numeric"
+				],
+				"default": "category"
+			},
+            "ChartType": {
+				"type": "string",
+				"enum": [
+					"Line",
+					"Area",
+					"Bar"
+				],
+				"default": "Line"
 			}
         }
     }

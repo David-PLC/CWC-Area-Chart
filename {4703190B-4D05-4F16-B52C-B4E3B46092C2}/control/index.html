@@ -27,15 +27,18 @@
 
     window.onload = function () {
       if (!production) {
+
         WebCC.Properties = {
-          X_axis: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          Y_axis: "[[18, 21, 22, 16, 19, 21, 21, 21],[7, 9, 11, 11, 9, 12, 11, 11]]",
-          SeriesColor: ["#ee730d","#1183e8"],
-          DataName: ["Max °C", "Min °C"],
-          X_axisname: 'Days',
-          Y_axisname: 'Temperatures',
+          X_axis: [["2023-08-29T13:12:09", "2023-08-29T13:15:13", "2023-08-29T13:20:21", "2023-08-29T13:25:23", "2023-08-29T13:30:25", "2023-08-29T13:35:26", "2023-08-29T13:40:27"]],
+          Y_axis: [[10, 25, 56, 9, 45, 25, 79]],
+          SeriesColor: ["#EE730D"],
+          DataName: ["Carriage power (Kw)"],
+          X_axisname: 'Time',
+          Y_axisname: 'Kw',
           SeriesLabels: true,
-          LineType: 'Smooth'
+          LineType: 'Smooth',
+          XAxisType: 'DateTime',
+          ChartType: 'Line'
         };
         init(true);
       }
@@ -56,9 +59,8 @@
 
 
   <script>
-    var chart;
-    var chartInit = function (props) {
 
+    var chartInit = function (props) {
       // load and parse Xaxis
       if (props.hasOwnProperty('X_axis') && props.X_axis != null) {
         if (typeof props.X_axis === 'string') {
@@ -135,71 +137,77 @@
         propsLineType = props.LineType.toLowerCase();
       }
 
+      // load and parse XAxisType
+      if (props.hasOwnProperty('XAxisType') && props.XAxisType != null) {
+        propsXAxisType = props.XAxisType.toLowerCase();
+      }
 
-      let xSeries = createSeries(propsDataName, propsY_axis, propsSeriesColor);
-      showChart(xSeries, propsX_axisname, propsY_axisname, propsSeriesLabels, propsLineType);
+      // load and parse ChartType
+      if (props.hasOwnProperty('ChartType') && props.ChartType != null) {
+        propsChartType = props.ChartType.toLowerCase();
+      }
+
+      if (chart.renderDone) {
+        updateSeries(propsDataName, propsY_axis, propsX_axis, propsSeriesColor)
+      } else {
+        let xSeries = createSeries(propsDataName, propsY_axis, propsX_axis, propsSeriesColor);
+        let options = creteOptions(xSeries, propsChartType, propsX_axisname, propsY_axisname, propsSeriesLabels, propsLineType, propsXAxisType);
+
+        chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render().then(() => chart.renderDone = true);
+      }
+      WebCC.Properties.Render = false;
     }
 
-    function createSeries(name, data, color) {
+    function createSeries(name, dataY, dataX, color) {
+      let xSeries = [];
+      for (let i = 0; i < name.length; i++) {
+        let xValXY = [];
+        let xData = {};
+        xData['name'] = name[i];
+        xData['color'] = color[i];
+        for (let x = 0; x < dataY[i].length; x++) {
+          let dataxy = {};
+          dataxy['x'] = dataX[i][x];
+          dataxy['y'] = dataY[i][x];
+          xValXY.push(dataxy);
+        }
+        xData['data'] = xValXY;
+        xSeries.push(xData);
+      }
+      console.log("CWC_AreaChart render:" + JSON.stringify(xSeries));
+      return xSeries;
+    }
+
+    function updateSeries(name, dataY, dataX, color) {
       let xSeries = [];
       for (let i = 0; i < name.length; i++) {
         let xData = {};
+        let xValXY = [];
         xData['name'] = name[i];
-        xData['data'] = data[i];
         xData['color'] = color[i];
+        for (let x = 0; x < dataY[i].length; x++) {
+          let dataxy = {};
+          dataxy['x'] = dataX[i][x];
+          dataxy['y'] = dataY[i][x];
+          xValXY.push(dataxy);
+        }
+        xData['data'] = xValXY;
         xSeries.push(xData);
       }
-      return xSeries;
-      console.log(JSON.stringify(xSeries));
-    }
-
-    function updateSeries(name, data) {
-      if (data != null) {
-        if (typeof data === 'string') {
-          console.log('CWC_AreaChart: data:' + data);
-          propsData = JSON.parse(data);
-        } else if (Array.isArray(data)) {
-          propsData = data;
-        } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: data');
-        }
-      } else {
-        return;
-      }
-
-      if (name != null) {
-        if (typeof name === 'string') {
-          console.log('CWC_AreaChart: name:' + name);
-          propsName = JSON.parse(name);
-        } else if (Array.isArray(name)) {
-          propsName = name;
-        } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: DataName');
-        }
-      } else {
-        return;
-      }
-
-      let xSeries = [];
-      for (let i = 0; i < propsName.length; i++) {
-        let xData = {};
-        xData['name'] = propsName[i];
-        xData['data'] = propsData[i];
-        xSeries.push(xData);
-      }
-      console.log(JSON.stringify(xSeries));
+      console.log("CWC_AreaChart update:" + JSON.stringify(xSeries));
       chart.updateSeries(xSeries, true);
     }
 
 
-    function showChart(xSeries, XNames, YNames, xLabels, xLineType) {
-      var options = {
-
+    function creteOptions(xSeries, chartType, XNames, YNames, xLabels, xLineType, xXAxisType) {
+      let xoptions = {
         series: xSeries,
         chart: {
-          type: 'area',
+          type: chartType,
           width: '100%',
           height: '100%',
+          fontFamily: 'Montserrat',
           zoom: {
             enabled: true
           }
@@ -213,12 +221,13 @@
         },
         stroke: {
           curve: xLineType,
-          lineCap: 'round',
+          lineCap: 'square',
         },
-
-
-        labels: propsX_axis,
         xaxis: {
+          type: xXAxisType,
+          labels: {
+            datetimeUTC: false
+          },
           title: {
             text: XNames,
           },
@@ -232,11 +241,14 @@
           position: 'top',
           horizontalAlign: 'center',
           floating: true
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yyyy HH:mm:ss:fff'
+          },
         }
       };
-
-      chart = new ApexCharts(document.querySelector("#chart"), options);
-      chart.render();
+      return xoptions
     }
 
   </script>

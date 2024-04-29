@@ -11,7 +11,10 @@ const _contract = {
         'X_axisname': '',
         'Y_axisname': '',
         'SeriesLabels': true,
-        'LineType': 'Smooth'
+        'Render': false,
+        'LineType': 'Smooth',
+        'XAxisType': 'Category',
+        'ChartType': 'Line'
     }
 };
 
@@ -19,14 +22,14 @@ var UnifiedInterface = function () {
     var _initialize = function () {
         console.log('CWC_AreaChart: UnifiedInterface initialized');
     };
-    
+
     var _setProps = function (data) {
-         console.log('CWC_AreaChart: Key <', data.key, '>');
-         if (data.key === 'Y_axis' || data.key === 'DataName') {
-            console.log('updateSeries!');
-            updateSeries(WebCC.Properties.DataName, WebCC.Properties.Y_axis);
-        } else {
-         chartInit(WebCC.Properties);
+        console.log('CWC_AreaChart: Key <', data.key, '>');
+        if (data.key === 'Render') {
+            if (WebCC.Properties['Render']) {
+                chartInit(WebCC.Properties);
+                console.log('Render <', WebCC.Properties['Render'], '>');
+            }
         }
     };
 
