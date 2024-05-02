@@ -10,8 +10,8 @@ const _contract = {
         'SeriesColor': [],
         'X_axisname': '',
         'Y_axisname': '',
-        'ShowLine': true,
         'SeriesLabels': true,
+        'ShowLine': true,
         'Render': false,
         'LineType': 'Smooth',
         'XAxisType': 'Category',
@@ -25,11 +25,11 @@ var UnifiedInterface = function () {
     };
 
     var _setProps = function (data) {
-        console.log('CWC_AreaChart: Key <', data.key, '>');
+        console.log('CWC_AreaChart: Key <' + data.key + '> = ' + WebCC.Properties[data.key]);
         if (data.key === 'Render') {
             if (WebCC.Properties['Render']) {
                 chartInit(WebCC.Properties);
-                console.log('Render <', WebCC.Properties['Render'], '>');
+                console.log('CWC_AreaChart: Render <', WebCC.Properties['Render'], '>');
             }
         }
     };

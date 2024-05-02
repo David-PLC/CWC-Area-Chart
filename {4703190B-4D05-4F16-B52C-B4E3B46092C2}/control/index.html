@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Apex Chart</title>
+  <title>CWC Area Chart</title>
   <link rel="icon" href="icon.png" />
 
   <script src="lib/jquery.min.js"></script>
@@ -14,14 +14,16 @@
   <script src="unified.interface.js"></script>
   <link href="lib/style.css" rel="stylesheet">
   <script>
-    var production = true;
+    var production = false;
 
     function init(result) {
       if (result) {
         unifiedInterfaceInit();
-        chartInit(WebCC.Properties);
+        if (!production) {
+          chartInit(WebCC.Properties);
+        }
       } else {
-        console.log('CWC_CWC_AreaChart: Init without result.');
+        console.log('CWC_AreaChart: Init without result.');
       }
     }
 
@@ -29,15 +31,15 @@
       if (!production) {
 
         WebCC.Properties = {
-          X_axis: [["2024-04-30 09:28:41.903", "2024-04-30 09:28:42.404", "2024-04-30 09:28:42.905", "2024-04-30 09:28:43.406", "2024-04-30 09:28:43.899", "2024-04-30 09:28:44.400", "2024-04-30 09:28:44.901", "2024-04-30 09:28:45.402", "2024-04-30 09:28:45.903", "2024-04-30 09:28:46.404", "2024-04-30 09:28:46.906", "2024-04-30 09:28:47.407", "2024-04-30 09:28:47.899", "2024-04-30 09:28:48.400", "2024-04-30 09:28:48.901", "2024-04-30 09:28:49.403", "2024-04-30 09:28:49.904", "2024-04-30 09:28:50.405", "2024-04-30 09:28:50.906", "2024-04-30 09:28:51.398", "2024-04-30 09:28:51.900", "2024-04-30 09:28:52.401", "2024-04-30 09:28:52.902", "2024-04-30 09:28:53.412", "2024-04-30 09:28:53.913", "2024-04-30 09:28:54.405", "2024-04-30 09:28:54.915", "2024-04-30 09:28:55.407", "2024-04-30 09:28:55.900", "2024-04-30 09:28:56.401", "2024-04-30 09:28:56.902", "2024-04-30 09:28:57.403", "2024-04-30 09:28:57.904", "2024-04-30 09:28:58.405", "2024-04-30 09:28:58.907", "2024-04-30 09:28:59.399", "2024-04-30 09:28:59.900", "2024-04-30 09:29:00.401", "2024-04-30 09:29:00.902", "2024-04-30 09:29:01.404", "2024-04-30 09:29:01.905", "2024-04-30 09:29:02.406", "2024-04-30 09:29:02.898", "2024-04-30 09:29:03.399", "2024-04-30 09:29:03.900", "2024-04-30 09:29:04.402", "2024-04-30 09:29:04.911", "2024-04-30 09:29:05.404", "2024-04-30 09:29:05.905", "2024-04-30 09:29:06.406", "2024-04-30 09:29:06.899", "2024-04-30 09:29:07.400", "2024-04-30 09:29:07.909", "2024-04-30 09:29:08.402", "2024-04-30 09:29:08.903", "2024-04-30 09:29:09.404", "2024-04-30 09:29:09.905", "2024-04-30 09:29:10.406", "2024-04-30 09:29:10.908", "2024-04-30 09:29:11.400", "2024-04-30 09:29:11.901", "2024-04-30 09:29:12.402", "2024-04-30 09:29:12.903", "2024-04-30 09:29:13.404", "2024-04-30 09:29:13.906", "2024-04-30 09:29:14.407", "2024-04-30 09:29:14.899", "2024-04-30 09:29:15.400", "2024-04-30 09:29:15.901", "2024-04-30 09:29:16.403", "2024-04-30 09:29:16.904", "2024-04-30 09:29:17.405", "2024-04-30 09:29:17.906", "2024-04-30 09:29:18.398", "2024-04-30 09:29:18.900", "2024-04-30 09:29:19.401", "2024-04-30 09:29:19.902", "2024-04-30 09:29:20.403", "2024-04-30 09:29:20.904", "2024-04-30 09:29:21.405", "2024-04-30 09:29:21.898", "2024-04-30 09:29:22.399", "2024-04-30 09:29:22.900", "2024-04-30 09:29:23.401", "2024-04-30 09:29:23.902", "2024-04-30 09:29:24.403", "2024-04-30 09:29:24.904", "2024-04-30 09:29:25.405", "2024-04-30 09:29:25.907", "2024-04-30 09:29:26.399", "2024-04-30 09:29:26.900", "2024-04-30 09:29:27.401", "2024-04-30 09:29:27.902", "2024-04-30 09:29:28.404", "2024-04-30 09:29:28.905", "2024-04-30 09:29:29.406", "2024-04-30 09:29:29.898", "2024-04-30 09:29:30.399", "2024-04-30 09:29:30.900", "2024-04-30 09:29:31.402", "2024-04-30 09:29:31.903", "2024-04-30 09:29:32.404", "2024-04-30 09:29:32.905", "2024-04-30 09:29:33.406", "2024-04-30 09:29:33.899", "2024-04-30 09:29:34.408", "2024-04-30 09:29:34.901", "2024-04-30 09:29:35.402", "2024-04-30 09:29:35.903", "2024-04-30 09:29:36.404", "2024-04-30 09:29:36.905", "2024-04-30 09:29:37.476", "2024-04-30 09:29:37.908", "2024-04-30 09:29:38.460", "2024-04-30 09:29:38.901", "2024-04-30 09:29:39.506", "2024-04-30 09:29:39.921", "2024-04-30 09:29:40.404", "2024-04-30 09:29:41.364", "2024-04-30 09:29:41.398", "2024-04-30 09:29:41.899", "2024-04-30 09:29:42.409", "2024-04-30 09:29:42.901", "2024-04-30 09:29:43.403", "2024-04-30 09:29:43.904", "2024-04-30 09:29:44.405", "2024-04-30 09:29:44.897", "2024-04-30 09:29:45.398", "2024-04-30 09:29:45.900", "2024-04-30 09:29:46.401", "2024-04-30 09:29:46.902", "2024-04-30 09:29:47.403", "2024-04-30 09:29:47.904", "2024-04-30 09:29:48.405", "2024-04-30 09:29:48.924", "2024-04-30 09:29:49.407", "2024-04-30 09:29:49.900", "2024-04-30 09:29:50.401", "2024-04-30 09:29:50.902", "2024-04-30 09:29:51.403", "2024-04-30 09:29:51.904", "2024-04-30 09:29:52.397", "2024-04-30 09:29:52.907", "2024-04-30 09:29:53.425", "2024-04-30 09:29:53.909", "2024-04-30 09:29:54.401", "2024-04-30 09:29:54.902", "2024-04-30 09:29:55.404", "2024-04-30 09:29:55.905", "2024-04-30 09:29:56.397"]],
-          Y_axis: [["370.00", "375.00", "380.00", "385.00", "390.00", "395.00", "400.00", "405.00", "410.00", "415.00", "420.00", "425.00", "430.00", "435.00", "440.00", "445.00", "450.00", "455.00", "460.00", "465.00", "470.00", "475.00", "480.00", "485.00", "490.00", "495.00", "50.00", "55.00", "60.00", "65.00", "70.00", "75.00", "80.00", "85.00", "90.00", "95.00", "100.00", "105.00", "110.00", "115.00", "120.00", "125.00", "130.00", "135.00", "140.00", "145.00", "150.00", "155.00", "160.00", "165.00", "170.00", "175.00", "180.00", "185.00", "190.00", "195.00", "200.00", "205.00", "210.00", "215.00", "220.00", "225.00", "230.00", "235.00", "240.00", "245.00", "250.00", "255.00", "260.00", "265.00", "270.00", "275.00", "280.00", "285.00", "290.00", "295.00", "300.00", "305.00", "310.00", "315.00", "320.00", "325.00", "330.00", "335.00", "340.00", "345.00", "350.00", "355.00", "360.00", "365.00", "370.00", "375.00", "380.00", "385.00", "390.00", "395.00", "400.00", "405.00", "410.00", "415.00", "420.00", "425.00", "430.00", "435.00", "440.00", "445.00", "450.00", "455.00", "460.00", "465.00", "470.00", "475.00", "480.00", "485.00", "490.00", "495.00", "50.00", "55.00", "60.00", "65.00", "70.00", "75.00", "80.00", "85.00", "90.00", "95.00", "100.00", "105.00", "110.00", "115.00", "120.00", "125.00", "130.00", "135.00", "140.00", "145.00", "150.00", "155.00", "160.00", "165.00", "170.00", "175.00", "180.00", "185.00", "190.00", "195.00", "200.00", "205.00", "210.00", "215.00"]],
+          X_axis: [["2024-04-30 09:28:41", "2024-04-30 09:35:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"]],
+          Y_axis: [["390.00", "375.00", "380.00", "385.00", "390.00", "395.00"]],
           SeriesColor: ["#EE730D"],
-          DataName: ["Carriage power (Kw)"],
+          DataName: ["Temperature"],
           X_axisname: 'Time',
           Y_axisname: 'Kw',
           SeriesLabels: false,
           ShowLine: false,
-          LineType: 'Smooth',
+          LineType: 'Straight',
           XAxisType: 'DateTime',
           ChartType: 'Area'
         };
@@ -65,12 +67,12 @@
       // load and parse Xaxis
       if (props.hasOwnProperty('X_axis') && props.X_axis != null && props.X_axis != '') {
         if (typeof props.X_axis === 'string') {
-          console.log('CWC_AreaChart: props.Xaxis:' + props.X_axis);
+          console.log('CWC_AreaChart: props.Xaxis <' + props.X_axis + ">");
           propsX_axis = JSON.parse(props.X_axis);
         } else if (Array.isArray(props.X_axis)) {
           propsX_axis = props.X_axis;
         } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: X_axis');
+          console.log('CWC_AreaChart: WRONG FORMAT X_axis!');
         }
       } else {
         return;
@@ -79,12 +81,12 @@
       // load and parse Y_axis
       if (props.hasOwnProperty('Y_axis') && props.Y_axis != null && props.Y_axis != '') {
         if (typeof props.Y_axis === 'string') {
-          console.log('CWC_AreaChart: props.Y_axis:' + props.Y_axis);
+          console.log('CWC_AreaChart: props.Y_axis <' + props.Y_axis + ">");
           propsY_axis = JSON.parse(props.Y_axis);
         } else if (Array.isArray(props.Y_axis)) {
           propsY_axis = props.Y_axis;
         } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: Y_axis');
+          console.log('CWC_AreaChart: WRONG FORMAT Y_axis!');
         }
       } else {
         return;
@@ -93,12 +95,12 @@
       // load and parse DataName
       if (props.hasOwnProperty('DataName') && props.DataName != null && props.DataName != '') {
         if (typeof props.DataName === 'string') {
-          console.log('CWC_AreaChart: props.DataName:' + props.DataName);
+          console.log('CWC_AreaChart: props.DataName <' + props.DataName + ">");
           propsDataName = JSON.parse(props.DataName);
         } else if (Array.isArray(props.DataName)) {
           propsDataName = props.DataName;
         } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: DataName');
+          console.log('CWC_AreaChart: WRONG FORMAT DataName!');
         }
       } else {
         return;
@@ -107,12 +109,12 @@
       // load and parse SeriesColor
       if (props.hasOwnProperty('SeriesColor') && props.SeriesColor != null && props.SeriesColor != '') {
         if (typeof props.SeriesColor === 'string') {
-          console.log('CWC_AreaChart: props.SeriesColor:' + props.SeriesColor);
+          console.log('CWC_AreaChart: props.SeriesColor <' + props.SeriesColor + ">");
           propsSeriesColor = JSON.parse(props.SeriesColor);
         } else if (Array.isArray(props.SeriesColor)) {
           propsSeriesColor = props.SeriesColor;
         } else {
-          console.log('CWC_AreaChart: WRONG FORMAT: SeriesColor');
+          console.log('CWC_AreaChart: WRONG FORMAT SeriesColor!');
         }
       } else {
         return;
@@ -121,50 +123,35 @@
       // load and parse X_axisname
       if (props.hasOwnProperty('X_axisname') && props.X_axisname != null && props.X_axisname != '') {
         propsX_axisname = props.X_axisname
-      } else {
-        return;
       }
 
       // load and parse Y_axisname
       if (props.hasOwnProperty('Y_axisname') && props.Y_axisname != null && props.Y_axisname != '') {
         propsY_axisname = props.Y_axisname
-      } else {
-        return;
       }
 
       // load and parse SeriesLabels
-      if (props.hasOwnProperty('SeriesLabels') && props.SeriesLabels != null && props.SeriesLabels != '') {
+      if (props.hasOwnProperty('SeriesLabels') && props.SeriesLabels != null) {
         propsSeriesLabels = props.SeriesLabels
-      } else {
-        return;
       }
 
       // load and parse ShowLine
-      if (props.hasOwnProperty('ShowLine') && props.ShowLine != null && props.ShowLine != '') {
+      if (props.hasOwnProperty('ShowLine') && props.ShowLine != null) {
         propsShowLine = props.ShowLine
-      } else {
-        return;
       }
 
       // load and parse LineType
       if (props.hasOwnProperty('LineType') && props.LineType != null && props.LineType != '') {
         propsLineType = props.LineType.toLowerCase();
-      } else {
-        return;
       }
-
       // load and parse XAxisType
       if (props.hasOwnProperty('XAxisType') && props.XAxisType != null && props.XAxisType != '') {
         propsXAxisType = props.XAxisType.toLowerCase();
-      } else {
-        return;
       }
 
       // load and parse ChartType
       if (props.hasOwnProperty('ChartType') && props.ChartType != null && props.ChartType != '') {
         propsChartType = props.ChartType.toLowerCase();
-      } else {
-        return;
       }
 
       if (chart.renderDone) {
@@ -195,7 +182,7 @@
         xData['data'] = xValXY;
         xSeries.push(xData);
       }
-      console.log("CWC_AreaChart render:" + JSON.stringify(xSeries));
+      console.log("CWC_AreaChart : render <" + JSON.stringify(xSeries) + ">");
       return xSeries;
     }
 
@@ -215,7 +202,7 @@
         xData['data'] = xValXY;
         xSeries.push(xData);
       }
-      console.log("CWC_AreaChart update:" + JSON.stringify(xSeries));
+      console.log("CWC_AreaChart : update <" + JSON.stringify(xSeries) + ">");
       chart.updateSeries(xSeries, true);
     }
 
