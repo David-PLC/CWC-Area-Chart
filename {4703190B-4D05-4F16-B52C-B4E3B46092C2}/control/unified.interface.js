@@ -12,6 +12,7 @@ const _contract = {
         'Y_axisname': '',
         'SeriesLabels': true,
         'ShowLine': true,
+        'X_ToolTipFormat': '',
         'Render': false,
         'LineType': 'Smooth',
         'XAxisType': 'Category',

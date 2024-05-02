@@ -54,6 +54,10 @@
                         "type": "boolean",
                         "default": true
                     },
+                    "X_ToolTipFormat": {
+                        "type": "string",
+                        "default": "dd/MM/yyyy HH:mm:ss:fff"
+                    },
                     "Render": {
                         "type": "boolean",
                         "default": false
