@@ -50,6 +50,10 @@
                         "type": "boolean",
                         "default": true
                     },
+                    "ShowLine": {
+                        "type": "boolean",
+                        "default": true
+                    },
                     "Render": {
                         "type": "boolean",
                         "default": false

@@ -10,6 +10,7 @@ const _contract = {
         'SeriesColor': [],
         'X_axisname': '',
         'Y_axisname': '',
+        'ShowLine': true,
         'SeriesLabels': true,
         'Render': false,
         'LineType': 'Smooth',
