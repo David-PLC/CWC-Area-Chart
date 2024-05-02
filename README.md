@@ -15,21 +15,21 @@ HTML area chart element done with ApexChart
 
   ```js 
       // Example
-      X_axis: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+      X_axis: [["2024-04-30 09:28:41", "2024-04-30 09:35:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"]]
   ```
 
-  - **Y_axis** : String in array format of numbers to draw the seires of the chart
+  - **Y_axis** : Array of element to draw the Y axis of the chart 
 
   ```js 
       // Example
-      Y_axis: "[[18, 21, 22, 16, 19, 21, 21, 21],[7, 9, 11, 11, 9, 12, 11, 11]]"
+      Y_axis: [["390.00", "375.00", "380.00", "385.00", "390.00", "395.00"]]
   ```
   
   - **DataName** : Array of strings with the name for each series
 
   ```js
       // Example
-      DataName: ["Max °C", "Min °C"]
+      DataName: ["Max °C"]
   ```
 
   - **X_axisname** : Name of the X axis (i.e. "Days")
@@ -45,7 +45,13 @@ HTML area chart element done with ApexChart
 
   - **SeriesLabels** : Flag to hide or show (False / True) the labels on the series (i.e. true)
   
+  - **ShowLine** : Flag to hide or show (False / True) the line on the series (i.e. true)
+
   - **LineType** : Draw smooth lines or straight lines (i.e. "Smooth")
+
+  - **XAxisType** : Type of data to show on the X axis (Category / Datetime / Numeric) (i.e. "Datetime")
+
+  - **ChartType** : Type of chart to draw (Line / Area / Bar) (i.e. "Area")
 ### **3. EVENTS**
 
   - **//**
@@ -60,14 +66,18 @@ HTML area chart element done with ApexChart
     var production = false;
     //...
     WebCC.Properties = {
-      X_axis: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      Y_axis: "[[18, 21, 22, 16, 19, 21, 21, 21],[7, 9, 11, 11, 9, 12, 11, 11]]",
-      SeriesColor: ["#ee730d","#1183e8"],
-      DataName: ["Max °C", "Min °C"],
-      X_axisname: 'Days',
-      Y_axisname: 'Temperatures',
-      SeriesLabels: true,
-      LineType: 'smooth'
+          X_axis: [["2024-04-30 09:28:41", "2024-04-30 09:35:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"],
+          ["2024-04-30 09:28:41", "2024-04-30 09:32:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"]],
+          Y_axis: [["390.00", "375.00", "380.00", "385.00", "390.00", "395.00"],["160.00", "255.00", "530.00", "415.00", "290.00", "295.00"]],
+          DataName: ["Temperature 1", "Temperature 2"],
+          X_axisname: 'Time',
+          Y_axisname: 'Kw',
+          SeriesColor: ["#EE730D", "#0DCFEE"],
+          SeriesLabels: false,
+          ShowLine: false,
+          LineType: 'Straight',
+          XAxisType: 'DateTime',
+          ChartType: 'Area'
     };
     ```
 
