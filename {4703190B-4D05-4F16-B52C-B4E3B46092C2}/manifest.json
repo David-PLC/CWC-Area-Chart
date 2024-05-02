@@ -78,7 +78,7 @@
 					"Straight",
 					"Stepline"
 				],
-				"default": "smooth"
+				"default": "Smooth"
 			},
             "XaxisType": {
 				"type": "string",
@@ -87,7 +87,7 @@
 					"Datetime",
 					"Numeric"
 				],
-				"default": "category"
+				"default": "Category"
 			},
             "ChartType": {
 				"type": "string",
