@@ -95,7 +95,7 @@ HTML area chart element done with ApexChart
     - {4703190B-4D05-4F16-B52C-B4E3B46092C2}.zip
     - If you want this custom web control available for all your project, copy this file in the folder : 
       - C:\Program Files\Siemens\Automation\Portal V17\Data\Hmi\CustomControls
-      - replace "Porla V17" with your Tia version.
+      - replace "Portal V17" with your Tia version.
     - If you want to use this custom web control only in one project copy this file in the folder :
 
       - \path_to_tia_project\UserFiles
