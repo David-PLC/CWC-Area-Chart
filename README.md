@@ -47,6 +47,12 @@ HTML area chart element done with ApexChart
   
   - **ShowLine** : Flag to hide or show (False / True) the line on the series (i.e. true)
 
+  - **X_ToolTipFormat** : Format of the Date and time tool tooltip for X axes, used only when "XAxisType" = Datetime (i.e. "dd/MM/yyyy HH:mm:fff")
+
+  - **Y_AxisMIN** : Minimum value for the Y axis, if 0 (zero) the chart will automatically adjust the value (i.e. -20)
+
+  - **Y_AxisMAX** : Maximum value for the Y axis, if 0 (zero) the chart will automatically adjust the value (i.e. 500)
+
   - **LineType** : Draw smooth lines or straight lines (i.e. "Smooth")
 
   - **XAxisType** : Type of data to show on the X axis (Category / Datetime / Numeric) (i.e. "Datetime")
@@ -55,6 +61,15 @@ HTML area chart element done with ApexChart
 ### **3. EVENTS**
 
   - **//**
+
+### **4. METODS**
+
+  - **Render** : Once all the data in the "INTERFACE" section has been filled in, to make the graph visible you need to use the Render() method
+
+  ```js
+      // Example in WinCC Unified
+      Screen.FindItem('NAME_OF_YOUR_CHART').Render();
+  ```
 
 ### **4. USAGE**
 
@@ -65,19 +80,21 @@ HTML area chart element done with ApexChart
     ```js
     var production = false;
     //...
-    WebCC.Properties = {
-          X_axis: [["2024-04-30 09:28:41", "2024-04-30 09:35:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"],
-          ["2024-04-30 09:28:41", "2024-04-30 09:32:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"]],
-          Y_axis: [["390.00", "375.00", "380.00", "385.00", "390.00", "395.00"],["160.00", "255.00", "530.00", "415.00", "290.00", "295.00"]],
-          DataName: ["Temperature 1", "Temperature 2"],
+        WebCC.Properties = {
+          X_axis: [["2024-05-08 08:35:53.364", "2024-05-08 08:35:53.848", "2024-05-08 08:35:54.349"], ["2024-05-08 08:35:53.364", "2024-05-08 08:35:53.848", "2024-05-08 08:35:54.349"]],
+          Y_axis: [["590.00", "592.00", "594.00"], ["550.00", "550.00", "550.00"]],
+          DataName: ["Temperature act", "Temperature SP."],
           X_axisname: 'Time',
           Y_axisname: 'Kw',
-          SeriesColor: ["#EE730D", "#0DCFEE"],
+          SeriesColor: ["#EE730D"],
           SeriesLabels: false,
-          ShowLine: false,
+          ShowLine: true,
+          X_ToolTipFormat: 'dd/MM/yyyy HH:mm:fff',
+          Y_AxisMIN: 0,
+          Y_AxisMAX: 0,
           LineType: 'Straight',
           XAxisType: 'DateTime',
-          ChartType: 'Area'
+          ChartType: 'Line'
     };
     ```
 
@@ -93,6 +110,7 @@ HTML area chart element done with ApexChart
       type": "guid://4703190B-4D05-4F16-B52C-B4E3B46092C2",
     ```
     - {4703190B-4D05-4F16-B52C-B4E3B46092C2}.zip
+   <a id="raw-url" href="https://raw.githubusercontent.com/David-PLC/CWC-Area-Chart/master/{4703190B-4D05-4F16-B52C-B4E3B46092C2}.zip">(Download Zip file)</a>
     - If you want this custom web control available for all your project, copy this file in the folder : 
       - C:\Program Files\Siemens\Automation\Portal V17\Data\Hmi\CustomControls
       - replace "Portal V17" with your Tia version.

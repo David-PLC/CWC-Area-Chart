@@ -1,7 +1,9 @@
 const _extensions = ['HMI'];
 const _timeout = 1000;
 const _contract = {
-    methods: {},
+    methods: {
+        Render: _render
+    },
     events: [],
     properties: {
         'X_axis': [],
@@ -13,11 +15,17 @@ const _contract = {
         'SeriesLabels': true,
         'ShowLine': true,
         'X_ToolTipFormat': '',
-        'Render': false,
+        'Y_AxisMIN' : 0,
+        'Y_AxisMAX' : 0,
         'LineType': 'Smooth',
         'XAxisType': 'Category',
         'ChartType': 'Line'
     }
+};
+
+function _render() {
+    console.log('CWC_AreaChart: Render request!');
+    chartInit(WebCC.Properties);
 };
 
 var UnifiedInterface = function () {
@@ -25,22 +33,19 @@ var UnifiedInterface = function () {
         console.log('CWC_AreaChart: UnifiedInterface initialized');
     };
 
+
     var _setProps = function (data) {
-        console.log('CWC_AreaChart: Key <' + data.key + '> = ' + WebCC.Properties[data.key]);
-        if (data.key === 'Render') {
-            if (WebCC.Properties['Render']) {
-                chartInit(WebCC.Properties);
-                console.log('CWC_AreaChart: Render <', WebCC.Properties['Render'], '>');
-            }
+        if (data.key) {
+            console.log('CWC_AreaChart: Key <' + data.key + '> = ' + WebCC.Properties[data.key]);
         }
     };
 
     return {
         Local: {
             initialize: _initialize,
-            setProps: _setProps
+            setProps: _setProps,
         },
-        HostListener: _contract
+        HostListener: _contract,
     };
 }();
 
@@ -49,7 +54,7 @@ var unifiedInterfaceInit = function () {
     UnifiedInterface.Local.initialize();
 
     // Subscribe for value changes
-    if (WebCC && WebCC.onPropertyChanged) {
+    if (WebCC && WebCC.onPropertyChanged && WebCC.on) {
         WebCC.onPropertyChanged.subscribe(UnifiedInterface.Local.setProps);
     }
 };

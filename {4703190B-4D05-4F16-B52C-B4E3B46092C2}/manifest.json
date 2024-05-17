@@ -19,7 +19,12 @@
         },
         "contracts": {
             "api": {
-                "methods": {},
+                "methods": {
+                    "Render": {
+                        "parameters": {},
+                        "description": "Render the chart"
+                    }
+                },
                 "events": {},
                 "properties": {
                     "X_axis": {
@@ -58,9 +63,13 @@
                         "type": "string",
                         "default": "dd/MM/yyyy HH:mm:ss:fff"
                     },
-                    "Render": {
-                        "type": "boolean",
-                        "default": false
+                    "Y_AxisMIN": {
+                        "type": "number",
+                        "default": 0
+                    },
+                    "Y_AxisMAX": {
+                        "type": "number",
+                        "default": 0
                     },
                     "LineType": {
                         "$ref": "#/control/types/LineTipes"
@@ -76,32 +85,32 @@
         },
         "types": {
             "LineTipes": {
-				"type": "string",
-				"enum": [
-					"Smooth",
-					"Straight",
-					"Stepline"
-				],
-				"default": "Smooth"
-			},
+                "type": "string",
+                "enum": [
+                    "Smooth",
+                    "Straight",
+                    "Stepline"
+                ],
+                "default": "Smooth"
+            },
             "XaxisType": {
-				"type": "string",
-				"enum": [
-					"Category",
-					"Datetime",
-					"Numeric"
-				],
-				"default": "Category"
-			},
+                "type": "string",
+                "enum": [
+                    "Category",
+                    "Datetime",
+                    "Numeric"
+                ],
+                "default": "Category"
+            },
             "ChartType": {
-				"type": "string",
-				"enum": [
-					"Line",
-					"Area",
-					"Bar"
-				],
-				"default": "Line"
-			}
+                "type": "string",
+                "enum": [
+                    "Line",
+                    "Area",
+                    "Bar"
+                ],
+                "default": "Line"
+            }
         }
     }
 }

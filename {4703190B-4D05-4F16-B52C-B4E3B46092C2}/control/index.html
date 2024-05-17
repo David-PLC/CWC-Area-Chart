@@ -31,19 +31,20 @@
       if (!production) {
 
         WebCC.Properties = {
-          X_axis: [["2024-04-30 09:28:41:562", "2024-04-30 09:35:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"],
-          ["2024-04-30 09:28:41", "2024-04-30 09:32:42", "2024-04-30 09:36:43", "2024-04-30 09:37:44", "2024-04-30 09:38:45", "2024-04-30 09:38:55"]],
-          Y_axis: [["390.00", "375.00", "380.00", "385.00", "390.00", "395.00"], ["160.00", "255.00", "530.00", "415.00", "290.00", "295.00"]],
-          DataName: ["Temperature 1", "Temperature 2"],
+          X_axis: [["2024-05-08 08:35:53.364", "2024-05-08 08:35:53.848", "2024-05-08 08:35:54.349"], ["2024-05-08 08:35:53.364", "2024-05-08 08:35:53.848", "2024-05-08 08:35:54.349"]],
+          Y_axis: [["590.00", "592.00", "594.00"], ["550.00", "550.00", "550.00"]],
+          DataName: ["Temperature act", "Temperature SP."],
           X_axisname: 'Time',
           Y_axisname: 'Kw',
-          SeriesColor: ["#EE730D", "#0DCFEE"],
+          SeriesColor: ["#EE730D"],
           SeriesLabels: false,
-          ShowLine: false,
+          ShowLine: true,
           X_ToolTipFormat: 'dd/MM/yyyy HH:mm:fff',
+          Y_AxisMIN: 0,
+          Y_AxisMAX: 0,
           LineType: 'Straight',
           XAxisType: 'DateTime',
-          ChartType: 'Area'
+          ChartType: 'Line'
         };
         init(true);
       }
@@ -147,7 +148,23 @@
         propsX_ToolTipFormat = props.X_ToolTipFormat
       }
 
-      
+      // load and parse Y_AxisMIN
+      if (props.hasOwnProperty('Y_AxisMIN') && props.Y_AxisMIN != null) {
+        if (props.Y_AxisMIN > 0) {
+          propsY_AxisMIN = props.Y_AxisMIN
+        } else {
+          propsY_AxisMIN = undefined
+        }
+      }
+
+      // load and parse Y_AxisMAX
+      if (props.hasOwnProperty('Y_AxisMAX') && props.Y_AxisMAX != null) {
+        if (props.Y_AxisMAX > 0) {
+          propsY_AxisMAX = props.Y_AxisMAX
+        } else {
+          propsY_AxisMAX = undefined
+        }
+      }
 
       // load and parse LineType
       if (props.hasOwnProperty('LineType') && props.LineType != null && props.LineType != '') {
@@ -167,7 +184,7 @@
         updateSeries(propsDataName, propsY_axis, propsX_axis, propsSeriesColor)
       } else {
         let xSeries = createSeries(propsDataName, propsY_axis, propsX_axis, propsSeriesColor);
-        let options = creteOptions(xSeries, propsChartType, propsX_axisname, propsY_axisname, propsShowLine, propsX_ToolTipFormat, propsSeriesLabels, propsLineType, propsXAxisType);
+        let options = creteOptions(xSeries, propsChartType, propsX_axisname, propsY_axisname, propsShowLine, propsX_ToolTipFormat, propsY_AxisMIN, propsY_AxisMAX, propsSeriesLabels, propsLineType, propsXAxisType);
 
         chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render().then(() => chart.renderDone = true);
@@ -216,7 +233,7 @@
     }
 
 
-    function creteOptions(xSeries, chartType, XNames, YNames, xShowLine, xToolTipFormat, xLabels, xLineType, xXAxisType) {
+    function creteOptions(xSeries, chartType, XNames, YNames, xShowLine, xToolTipFormat, YaxesMIN, YaxesMAX, xLabels, xLineType, xXAxisType) {
       let xoptions = {
         series: xSeries,
         chart: {
@@ -253,6 +270,8 @@
           title: {
             text: YNames,
           },
+          min: YaxesMIN,
+          max: YaxesMAX
         },
         legend: {
           position: 'top',
